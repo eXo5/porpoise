@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
+  animation: App-logo-spin infinite 8s linear;
   height: 80px;
 }
 
@@ -21,4 +21,55 @@
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+body {
+  padding-top: 20px;
+  color: white;
+  position: relative;
+  background-image: url("/images/construction.jpg");
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-position: 0 64;
+    background-size: cover; 
+
+}
+
+#uC {
+    text-align: center;
+    text-fill-color: linear-gradient(yellow, black);
+    text-shadow:
+    -2px -2px 0 #804000,
+    2px -2px 0 #ff8000,
+    -2px 2px 0 #804000,
+    2px 2px 0 #663300;
+    animation: construction 4s linear 3s infinite alternate;
+}
+
+@keyframes construction {
+  0% { color: orange-red; left: 100px; }
+  100% {color: orange; left: 20%; }
+}
+#logo {
+  display: block;
+  margin: auto;
+  position: absolute;
+}
+#myName {
+  text-align: center;
+  padding-top: 35px;
+  text-shadow:
+    -2px -2px 0 #804000,
+    2px -2px 0 #ff8000,
+    -2px 2px 0 #804000,
+    2px 2px 0 #663300;
+}
+
+.navbar {
+ background-color: rgba(255,255,255,0);
+}
+
+.clock {
+  text-align: center;
+  margin-top: 5px;
 }

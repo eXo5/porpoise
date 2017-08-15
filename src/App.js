@@ -1,19 +1,20 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Route, Switch} from 'react-router-dom'
 import './App.css';
-import MikeMain from './MikeMain.js'
+import ClockTower from './components/ClockTower'
+import MikeMain from './components/MikeMain.js'
+import Trivia from './components/Trivia'
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-
-            
-        </div>
-        <p className="App-intro">
-          <MikeMain />
-        </p>
+      <div>
+        <ClockTower />
+        
+          <Switch>
+            <Route exact path="/" render={()=> <MikeMain /> } />
+            <Route exact path="/trivia" render={()=> <Trivia />} />
+          </Switch>
+          
       </div>
     );
   }
