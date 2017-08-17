@@ -12,7 +12,7 @@ class MikeMain extends Component {
 		super()
 		this.state = {
 			triviaQs: [], 
-			triviaQ1: "",
+			triviaQ1: ""
     }
 }
 
