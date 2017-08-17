@@ -6,9 +6,11 @@ class Trivia extends Component {
 		super(props)
 		this.state = {
 
-			triviaQs: [], 
-			triviaQ1: "",
-			triq: [1, 2, 3, 4, 5]
+			triviaQs: [],
+			counter: 0,
+			wrongCount: 0,
+			rightCount: 0,
+			timer: 0
 		}
 	}
 
@@ -24,15 +26,6 @@ return this.state.triviaQs.map((element, i) => {
 
 }
 
-// showQs = () => { this.state.triviaQs.map((element, i ) => {
-// 					console.log(element.type)
-// 	return(
-// 						<div key={i}>
-// 							<p>{element.category}</p>
-// 						</div>	
-// 					)			
-// 	})
-// }
 componentDidMount(){
     const qList = [];
     let number = 0
@@ -57,7 +50,7 @@ componentDidMount(){
 componentDidUpdate(){
 				console.log(this.state.triviaQs)
 				console.log("^^^state.triviaQs")
-				console.log(this.triq)
+
 }
 
 	render() {
@@ -65,6 +58,15 @@ componentDidUpdate(){
 		console.log("am I fucking stupid")
 
 			var showQs = this.state.triviaQs.map((element, i) => {
+				var answers = [];
+				if (element.type === "boolean") {
+					console.log("hey that's bool")
+				}
+
+				if(element.type === "multiple") {
+					console.log("Hey it's more than one ")
+				}
+				console.log(element.type)
 				return(
 					<div key={i}>
 						<p>{element.category}</p>
@@ -73,11 +75,7 @@ componentDidUpdate(){
 					)
 			})
 
-				let showNums = this.state.triq.map((element, i) => {
-					return(
-						<p>{element}</p>
-						)
-				})
+
 	return (
 			<div>
 				{showQs}

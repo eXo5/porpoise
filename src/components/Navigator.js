@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-//import { Route, Switch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { Navbar, NavItem } from 'react-materialize';
 import helper from '../utility/helper/helper';
 
@@ -17,7 +17,7 @@ render(){
 
 
 			<Navbar brand='Ying' className="navbar navbar-default"right>
-				<NavItem href='#'>About Me</NavItem>
+				<Link to="about"><NavItem href='/about'>About Me</NavItem></Link>
 				<NavItem href='#'>Projects</NavItem>
 				<NavItem href='#'>Contact</NavItem>
 			</Navbar>
