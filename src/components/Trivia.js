@@ -34,41 +34,24 @@ return this.state.triviaQs.map((element, i) => {
 // 	})
 // }
 componentDidMount(){
-	var qList = []
-	class Question {
-		constructor(category, type, difficulty, correct_answer, incorrect_answers, question) {
-				this.category = "",
-				this.type = "",
-				this.difficulty = "",
-				this.correct_answer = "",
-				this.incorrect_answers = [],
-				this.question = ""
-			}
-		};
-	helper.getQs()
-		.then(function(results) {
-			results.data.results.map(function(element, i) {
-				
-				var	newQuestion = new Question(
-						`${element.category}`,
-						`${element.type}`,
-						`${element.difficulty}`,
-						`${element.correct_answer}`,
-						[],
-						`${element.question}`
-					)
-					element.incorrect_answers.map(function(element, i){
-						newQuestion.incorrect_answers.push({element})
-					})
-					qList.push(newQuestion)
-				})								
-			//console.log(qList)
-			//console.log("^^^qList")
-			//console.log(results)
-			//console.log("^^RESULTS^^")
-		})
-		this.setState({triviaQs: qList})
-}
+    const qList = [];
+    let number = 0
+    helper.getQs()
+        .then(function(results) {
+            results.data.results.map(function(element, i) {
+                qList.push(element)
+            })
+            
+            // console.log(results)
+            // console.log("^^RESULTS^^")
+        }).then(response => {
+            console.log("qList in CDM then")
+            console.log(qList)
+            this.setState({
+                triviaQs: qList
+            })
+        })
+    } 
 
 
 componentDidUpdate(){
@@ -84,7 +67,8 @@ componentDidUpdate(){
 			var showQs = this.state.triviaQs.map((element, i) => {
 				return(
 					<div key={i}>
-						<p>{this.state.triviaQs[`${i}`].category}</p>
+						<p>{element.category}</p>
+						<p>{element.question}</p>
 					</div>
 					)
 			})
