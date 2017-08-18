@@ -1,41 +1,27 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 8s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 100px;
-  padding: 20px;
-  color: white;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  50% {transform: rotate(360deg);}
-  100% { transform: rotate3d(0, 1, 0, 180deg);}
-}
-
 body {
   padding-top: 20px;
   color: white;
   position: relative;
   background-image: url("/images/construction.jpg");
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-position: 0 64;
-    background-size: cover; 
-
-}
-
+    background-size: auto; 
+}.App {
+      text-align: center;
+      }.App-logo {
+        animation: App-logo-spin infinite 8s linear;
+        height: 80px;
+      }#logo {
+        display: inline-block;
+        margin: 0 auto;
+        position: absolute;
+      }@keyframes App-logo-spin {
+        from { transform: rotate(0deg); }
+        50%  { transform: rotate(360deg); }
+        100% { transform: rotate3d(0, 1, 0, 180deg); }
+      }                 
+/*Construction Component*/
 #uC {
     text-align: center;
     text-fill-color: linear-gradient(yellow, black);
@@ -45,19 +31,9 @@ body {
     -2px 2px 0 #804000,
     2px 2px 0 #663300;
     animation: construction 4s linear 3s infinite alternate;
-}
-
-@keyframes construction {
+}@keyframes construction {
   0% { color: orange-red; left: 100px; }
   100% {color: orange; left: 20%; }
-}
-
-#logo {
-  display: inline-block;
-
-  margin: 0 auto;
-  position: absolute;
-
 }
 #myName {
   text-align: center;
@@ -71,6 +47,10 @@ body {
 
 .navbar {
  background-color: rgba(255,255,255,0);
+ display: inline-block;
+}.navi {
+  display: inline-flex;
+  align-content: right;
 }
 
 .clock {

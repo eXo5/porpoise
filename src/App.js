@@ -5,6 +5,7 @@ import ClockTower from './components/ClockTower'
 import MikeMain from './components/MikeMain'
 import Trivia from './components/Trivia'
 import AboutMe from './components/AboutMe'
+import Contact from './components/Contact'
 class App extends Component {
   render() {
     return (
@@ -15,6 +16,7 @@ class App extends Component {
             <Route exact path="/" render={()=> <MikeMain /> } />
             <Route exact path="/trivia" render={()=> <Trivia />} />
             <Route exact path="/about" render={()=> <AboutMe />} />
+            <Route exact path="/contact" render={()=> <Contact />} />
           </Switch>
           
       </div>

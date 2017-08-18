@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { Route, Switch, Link } from 'react-router-dom'
 import { Button } from 'react-materialize'
 import helper from '../utility/helper/helper'
-import Navigator from './Navigator'
+import Navi from './Navigator'
 import logo from '../logo.svg';
 import '../App.css';
 import UnderConstruction from './ConstructionCard'
@@ -13,11 +13,9 @@ class MikeMain extends Component {
 		this.state = {
 			triviaQs: [], 
 			triviaQ1: ""
+
     }
 }
-
-
-	
 
 componentDidMount() {
 
@@ -30,7 +28,7 @@ componentDidMount() {
 					<img src={logo} className="App-logo" alt="logo" />
 				</div>
 
-				<Navigator />
+				<Navi />
 				<UnderConstruction />
 				<Link to="trivia"><Button>Click Me</Button></Link>
 			

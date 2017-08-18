@@ -1,16 +1,19 @@
 import React, {Component} from 'react'
 import helper from '../utility/helper/helper'
-
+import Navi from './Navigator'
+import TriviaQuestions from './TriviaQuestions'
 class Trivia extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
 
 			triviaQs: [],
+			triviaanswers: [],
 			counter: 0,
 			wrongCount: 0,
 			rightCount: 0,
 			timer: 0
+
 		}
 	}
 
@@ -23,6 +26,13 @@ return this.state.triviaQs.map((element, i) => {
 		</span>
 		)
 	})
+
+}
+
+checkIt = (event) => {
+	event.preventDefault();
+	var check;
+	console.log(this.form)
 
 }
 
@@ -48,9 +58,8 @@ componentDidMount(){
 
 
 componentDidUpdate(){
-				console.log(this.state.triviaQs)
-				console.log("^^^state.triviaQs")
-
+				// console.log(this.state.triviaQs)
+				// console.log("^^^state.triviaQs")
 }
 
 	render() {
@@ -60,11 +69,11 @@ componentDidUpdate(){
 			var showQs = this.state.triviaQs.map((element, i) => {
 				var answers = [];
 				if (element.type === "boolean") {
-					console.log("hey that's bool")
+					//console.log("hey that's bool")
 				}
 
 				if(element.type === "multiple") {
-					console.log("Hey it's more than one ")
+					//console.log("Hey it's more than one ")
 				}
 				console.log(element.type)
 				return(
@@ -78,6 +87,8 @@ componentDidUpdate(){
 
 	return (
 			<div>
+			<Navi />
+			<TriviaQuestions question={this.state.triviaQs[this.state.counter]} checkIt={this.checkIt}/>
 				{showQs}
 			</div>	
 		
