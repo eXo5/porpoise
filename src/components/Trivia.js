@@ -12,7 +12,8 @@ class Trivia extends Component {
 			counter: 0,
 			wrongCount: 0,
 			rightCount: 0,
-			timer: 0
+			timer: 0,
+			thisAnswer: ""
 
 		}
 	}
@@ -31,9 +32,11 @@ return this.state.triviaQs.map((element, i) => {
 
 checkIt = (event) => {
 	event.preventDefault();
-	var check;
-	console.log(this.form)
-
+	var checkCount = this.state.counter
+	++checkCount
+	this.setState({counter: checkCount})
+	console.log(this.state.counter)	
+	
 }
 
 componentDidMount(){
@@ -89,7 +92,7 @@ componentDidUpdate(){
 			<div>
 			<Navi />
 			<TriviaQuestions question={this.state.triviaQs[this.state.counter]} checkIt={this.checkIt}/>
-				{showQs}
+	
 			</div>	
 		
 	)
