@@ -1,6 +1,7 @@
 var path = require("path");
 var axios = require("axios");
-
+var fs = require("fs");
+var path = require("path");
 
 var User = require("../db/models/user.js");
 
@@ -10,6 +11,42 @@ module.exports = function(app) {
 app.get("/", function(req, res){
   res.sendFile(__dirname + "./public/index.html");
 });
+
+app.get("/about-life", function(req, res){
+
+  // Read all the files in the folder in sequence, using callbacks
+
+
+    fs.readdir( "../../public/images", function( error, files ) {
+        if ( error ) {
+            console.log("Error listing file contents.");
+        } else {
+            var totalBytes = 0;
+
+            // This function repeatedly calls itself until the files are all read.
+            var readFiles = function(index) {
+                if ( index == files.length ) {
+                    // we are done.
+                    console.log( "Done reading files. totalBytes = " + 
+                        totalBytes );
+                } else {
+
+                    fs.readFile( files[index], function( error, data ) {
+                        if ( error ) {
+                            console.log( "Error reading file. ", error );
+                        } else {
+                            totalBytes += data.length;
+                            readFiles(index + 1);
+                        }
+                    });
+                }
+
+            };
+
+            readFiles(0);
+        }
+    });
+})
 
 //Routes for new users and login/logout found in /auth/index.js
 //route for viewing chores

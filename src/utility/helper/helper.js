@@ -7,7 +7,15 @@ var helper = {
 			.then(function(results){
 				return results;
 			})
+	},
+
+	getImages: function(){
+		return axios.get("/about-life")
+			.then(function(results){
+				return results
+			})
 	}
+	
 }
 
 export default helper

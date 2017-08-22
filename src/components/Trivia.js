@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import helper from '../utility/helper/helper'
 import Navi from './Navigator'
 import TriviaQuestions from './TriviaQuestions'
+
 class Trivia extends Component {
 	constructor(props){
 		super(props)
