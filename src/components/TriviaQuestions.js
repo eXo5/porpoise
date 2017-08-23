@@ -53,8 +53,9 @@ componentWillReceiveProps(nextProps){
 	}	
 }
 
-componentDidMount(){
+componentDidUpdate(){
 	console.log(this.state.question)
+	console.log(this.state.correct)
 }
 
 selector = (event) => {
@@ -65,34 +66,26 @@ selector = (event) => {
 
 checkRight = (event) => {
 	event.preventDefault();
-// var x = document.getElementsByName("answer1");
-// var i;
-// 	for (i = 0; i < x.length; i++) {
-//     if (x[i].type == "radio") {
-//         x[i].checked = false;
-//     }
-// 	}
+var x = document.getElementsByName("answer1");
+
+var i;
+	for (i = 0; i < x.length; i++) {
+    if (x[i].type == "radio") {
+        console.log(x[i])
+        x[i].setAttribute("checked", false);
+    }
+	}
 }
 render(){
-	
-	// if (this.state.type === "boolean"){
-	// 	return (
-	// 			<div className="trivQuests">
-	// 				<p>{this.state.timer}</p>
-	// 					<p>{this.state.question}</p>
-
-	// 				<form>
-	// 					<Row>
-	// 						<Col s={6}>
-	// 						<Input name="answer1" type="radio" onClick={this.selector} value={this.state.answers[0]} label={this.state.answers[0]} />
-	// 						<Input name="answer1" type="radio" onClick={this.selector} value={this.state.answers[1]} label={this.state.answers[1]} />
-	// 						</Col>
-	// 					</Row>
-	// 				</form>
-	// 			</div>		
-	// 		)
-	// }
-	// else if (this.state.type === "multiple") {	
+	let showInputs = this.state.answers.map((element, i) => {	
+	return(	
+				<div key={i}>
+					<Input name="answer1" type="radio" onClick={this.selector} value={`${element}`} label={`${element}`} />
+					<br />
+					<br />
+				</div>
+		)
+	})
 		return (
 			<div className="trivQuests">
 			<p>{this.state.timer}</p>
@@ -100,19 +93,10 @@ render(){
 				<form>
 					<Row>
 						<Col s={6}>
-						<Input name="answer1" type="radio" onClick={this.selector} checked="false" value={`${this.state.answers[0]}`} label={`${this.state.answers[0]}`} />
-						<br />
-						<br />
-						<Input name="answer1" type="radio" onClick={this.selector} value={`${this.state.answers[1]}`} label={`${this.state.answers[1]}`} />
-						<br />
-						<br />
-						<Input name="answer1" type="radio" onClick={this.selector} value={`${this.state.answers[2]}`} label={`${this.state.answers[2]}`} />
-						<br />
-						<br />
-						<Input name="answer1"  type="radio" onClick={this.selector} value={`${this.state.answers[3]}`} label={`${this.state.answers[3]}`} />
+							{showInputs}
 						</Col>
 					</Row>
-						<Button onClick={this.props.checkIt}>Submit Answer</Button>
+						<Button onClick={this.checkRight && this.props.checkIt}>Submit Answer</Button>
 				</form>		
 				{console.log(this.state.question)}
 			</div>	

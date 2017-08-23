@@ -52,8 +52,8 @@ componentDidMount(){
             // console.log(results)
             // console.log("^^RESULTS^^")
         }).then(response => {
-            console.log("qList in CDM then")
-            console.log(qList)
+            // console.log("qList in CDM then")
+            // console.log(qList)
             this.setState({
                 triviaQs: qList
             })
@@ -68,8 +68,7 @@ componentDidUpdate(){
 
 	render() {
 		console.log(this.state.triviaQs)
-		console.log("am I fucking stupid")
-
+		
 			var showQs = this.state.triviaQs.map((element, i) => {
 				var answers = [];
 				if (element.type === "boolean") {
@@ -79,7 +78,7 @@ componentDidUpdate(){
 				if(element.type === "multiple") {
 					//console.log("Hey it's more than one ")
 				}
-				console.log(element.type)
+				// console.log(element.type)
 				return(
 					<div key={i}>
 						<p>{element.category}</p>
