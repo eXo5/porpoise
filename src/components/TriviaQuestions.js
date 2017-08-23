@@ -66,15 +66,18 @@ selector = (event) => {
 
 checkRight = (event) => {
 	event.preventDefault();
+	alert("ok")
 var x = document.getElementsByName("answer1");
-
 var i;
 	for (i = 0; i < x.length; i++) {
     if (x[i].type == "radio") {
         console.log(x[i])
+        console.log(x[i].hasAttribute("checked"))
         x[i].setAttribute("checked", false);
+        x[i].removeAttribute("checked");
     }
 	}
+	//INSERT THE setParentState to increase counter because WHHHHATTT THIS SHIT WORKS.
 }
 render(){
 	let showInputs = this.state.answers.map((element, i) => {	
@@ -96,9 +99,9 @@ render(){
 							{showInputs}
 						</Col>
 					</Row>
-						<Button onClick={this.checkRight && this.props.checkIt}>Submit Answer</Button>
+						<Button onClick={this.checkRight}>Submit Answer</Button>
 				</form>		
-				{console.log(this.state.question)}
+
 			</div>	
 			)
 		//}
