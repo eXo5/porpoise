@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import helper from '../utility/helper/helper'
 import Navi from './Navigator'
+import GetQuestions from './GetQuestions'
 import TriviaQuestions from './TriviaQuestions'
 
 class Trivia extends Component {
@@ -91,7 +92,8 @@ componentDidUpdate(){
 	return (
 			<div>
 			<Navi />
-			<TriviaQuestions question={this.state.triviaQs[this.state.counter]} checkIt={this.checkIt}/>
+			<GetQuestions />
+			{/*<TriviaQuestions question={this.state.triviaQs[this.state.counter]} checkIt={this.checkIt}/> */}
 	
 			</div>	
 		
