@@ -28,7 +28,7 @@ render() {
 		<div>
 			<Navi />
 		<p>This is 'Soldier Art' from the inside of a concrete bunker in Afghanistan.</p>
-		{}
+		<img src="script.php?file=/public/images/IMG_1369.JPG" />
 		</div>
 		)
 	}

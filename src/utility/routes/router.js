@@ -13,40 +13,10 @@ app.get("/", function(req, res){
 });
 
 app.get("/about-life", function(req, res){
+  res.send("Your NODE APP IS ALIVE")
+});
 
-  // Read all the files in the folder in sequence, using callbacks
-
-
-    fs.readdir( "../../public/images", function( error, files ) {
-        if ( error ) {
-            console.log("Error listing file contents.");
-        } else {
-            var totalBytes = 0;
-
-            // This function repeatedly calls itself until the files are all read.
-            var readFiles = function(index) {
-                if ( index == files.length ) {
-                    // we are done.
-                    console.log( "Done reading files. totalBytes = " + 
-                        totalBytes );
-                } else {
-
-                    fs.readFile( files[index], function( error, data ) {
-                        if ( error ) {
-                            console.log( "Error reading file. ", error );
-                        } else {
-                            totalBytes += data.length;
-                            readFiles(index + 1);
-                        }
-                    });
-                }
-
-            };
-
-            readFiles(0);
-        }
-    });
-})
+}
 
 //Routes for new users and login/logout found in /auth/index.js
 //route for viewing chores
@@ -99,12 +69,10 @@ app.get("/about-life", function(req, res){
 // 	})
 //})//END api/post/chores
 
-app.delete("/api/drop/:collection",function(req, res){
-	var collection = req.params.collection;
-	console.log(collection);
-	collection.drop();
-})
-
-
+// app.delete("/api/drop/:collection",function(req, res){
+// 	var collection = req.params.collection;
+// 	console.log(collection);
+// 	collection.drop();
+// })
 
 }

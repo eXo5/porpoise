@@ -8,9 +8,15 @@ class Trivia extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
-
+			//GetQuestions states
+			qCount: 0,
+			category: "",
+			difficulty: "",
+			//local states
 			triviaQs: [],
 			triviaanswers: [],
+
+			//TriviaQuestions states
 			counter: 0,
 			wrongCount: 0,
 			rightCount: 0,
@@ -41,10 +47,29 @@ checkIt = (event) => {
 	
 }
 
-componentDidMount(){
-    const qList = [];
-    let number = 0
-    helper.getQs()
+handleChange = (event) => {
+	const target = event.target;
+	  var name = event.target.name;
+    if (target.type === 'checkbox') { 
+    var value =	target.checked;
+    }
+    	else if (target.type === "number") { 
+    		var value = Math.abs(event.target.value);
+    	}
+    	else { 
+    		var value = event.target.value;
+    	}
+    	
+    this.setState({
+      [name]: value
+    });
+}
+
+getCustomQs = (event) => {
+	event.preventDefault();
+ const qList = [];
+
+    helper.getCustomQs()
         .then(function(results) {
             results.data.results.map(function(element, i) {
                 qList.push(element)
@@ -59,6 +84,10 @@ componentDidMount(){
                 triviaQs: qList
             })
         })
+}
+
+componentDidMount(){
+   
     } 
 
 
@@ -92,7 +121,7 @@ componentDidUpdate(){
 	return (
 			<div>
 			<Navi />
-			<GetQuestions />
+			<GetQuestions questionHandler={this.getCustomQs} handleChange={this.handleChange} qCount={this.state.qCount} category={this.state.category} difficulty={this.state.difficulty}/>
 			{/*<TriviaQuestions question={this.state.triviaQs[this.state.counter]} checkIt={this.checkIt}/> */}
 	
 			</div>	
