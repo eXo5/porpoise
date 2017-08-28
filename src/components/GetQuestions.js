@@ -55,10 +55,10 @@ componentDidUpdate(){
 
 	render() {
 		return (
-			<div>
+			<div id="questionList">
 				<form>
 					<Row>
-						<Col s={4}>
+						<Col s={6}>
 						<Input 
 						type="number" 
 						label="How many questions would you like?" 
@@ -77,7 +77,6 @@ componentDidUpdate(){
 						name="category" 
 						value={this.props.category}
 						onChange={this.props.handleChange} 
-						s={4}
 						>
 	          	<select value={this.state.category} onChange={this.handleChange} />
 	            	<option value="9">General Questions</option>
@@ -113,8 +112,7 @@ componentDidUpdate(){
 	           label="Difficulty?"
 	           name="difficulty" 
 	           value={this.props.difficulty}
-	           onChange={this.props.handleChange} 
-	           s={4} 
+	           onChange={this.props.handleChange}  
 	           >
 	           <select 
 	           value={this.props.difficulty} 

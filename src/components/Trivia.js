@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Switch, Route, Link, Redirect } from 'react-router-dom'
 import helper from '../utility/helper/helper'
 import Navi from './Navigator'
 import GetQuestions from './GetQuestions'
@@ -12,6 +13,7 @@ class Trivia extends Component {
 			qCount: 0,
 			category: "",
 			difficulty: "",
+
 			//local states
 			triviaQs: [],
 			triviaanswers: [],
@@ -69,7 +71,7 @@ getCustomQs = (event) => {
 	event.preventDefault();
  const qList = [];
 
-    helper.getCustomQs()
+    helper.getCustomQs(this.state.qCount, this.state.category, this.state.difficulty)
         .then(function(results) {
             results.data.results.map(function(element, i) {
                 qList.push(element)
@@ -83,7 +85,9 @@ getCustomQs = (event) => {
             this.setState({
                 triviaQs: qList
             })
+            redirect to
         })
+
 }
 
 componentDidMount(){
@@ -97,32 +101,21 @@ componentDidUpdate(){
 }
 
 	render() {
-		console.log(this.state.triviaQs)
 		
-			var showQs = this.state.triviaQs.map((element, i) => {
-				var answers = [];
-				if (element.type === "boolean") {
-					//console.log("hey that's bool")
-				}
-
-				if(element.type === "multiple") {
-					//console.log("Hey it's more than one ")
-				}
-				// console.log(element.type)
-				return(
-					<div key={i}>
-						<p>{element.category}</p>
-						<p>{element.question}</p>
-					</div>
-					)
-			})
-
-
 	return (
+
 			<div>
 			<Navi />
-			<GetQuestions questionHandler={this.getCustomQs} handleChange={this.handleChange} qCount={this.state.qCount} category={this.state.category} difficulty={this.state.difficulty}/>
-			{/*<TriviaQuestions question={this.state.triviaQs[this.state.counter]} checkIt={this.checkIt}/> */}
+			<GetQuestions 
+			questionHandler={this.getCustomQs} 
+			handleChange={this.handleChange} 
+			qCount={this.state.qCount} 
+			category={this.state.category} 
+			difficulty={this.state.difficulty}
+			/>
+
+
+			<Route exact path="/trivia/quiz" render={()=> <TriviaQuestions question={this.state.triviaQs[this.state.counter]} checkIt={this.checkIt} /> }/>
 	
 			</div>	
 		

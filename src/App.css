@@ -67,3 +67,7 @@ body {
     -2px 2px 0 #804000,
     2px 2px 0 #663300;
 }
+/*Trivia*/
+  #getQuestions {
+    text-align: center;
+  }

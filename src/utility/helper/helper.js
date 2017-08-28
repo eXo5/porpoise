@@ -14,7 +14,7 @@ var helper = {
 		var category;
 		var difficulty;
 		//more than one way to skin a cat &#9660.
-		(qCount ===  "0" ? qCount = 10 : qCount = qCount);
+		(!qCount ? qCount = "10" : qCount = qCount);
 		(!category ? category = "9" : category = category);
 		(!difficulty  ? difficulty = "medium" : category = category);
 		console.log(qCount)
