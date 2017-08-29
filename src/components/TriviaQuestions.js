@@ -11,7 +11,8 @@ class TriviaQuestions extends Component {
 			question: "",
 			answers: [],
 			correct: "",
-			answeredQuestion: ""
+			answeredQuestion: "",
+
 		}
 	}
 
@@ -23,34 +24,46 @@ class TriviaQuestions extends Component {
 // }
 	
 // }
+getInitialState(){
+	return (
+		console.log(this.props.showQs),
+		console.log(this.props.question)
+	)
+}
 
-
+componentDidMount(){
+	console.log(this.props)
+	console.log(this.state)
+}
 
 componentWillReceiveProps(nextProps){
-	var theAnswers = []
-	
-	if (nextProps.question.type === "multiple"){
-			for (var i = 0; i < nextProps.question.incorrect_answers.length; i++){
-				theAnswers.push(nextProps.question.incorrect_answers[i]);
+	console.log(this.nextProps)
+	if (this.props.showQs === true){ 
+		var theAnswers = []
+		
+		if (nextProps.question.type === "multiple") {
+				for (var i = 0; i < nextProps.question.incorrect_answers.length; i++){
+					theAnswers.push(nextProps.question.incorrect_answers[i]);
+				}
+				theAnswers.push(nextProps.question.correct_answer)
+				console.log(theAnswers.sort())
+				this.setState({
+				question:nextProps.question.question,
+				answers: theAnswers.sort(),
+				correct: nextProps.question.correct_answer,
+				type: nextProps.question.type
+				})
 			}
-			theAnswers.push(nextProps.question.correct_answer)
-			console.log(theAnswers.sort())
+		else if (nextProps.question.type === "boolean"){
+			theAnswers.push("true", "false")
 			this.setState({
-			question:nextProps.question.question,
-			answers: theAnswers.sort(),
-			correct: nextProps.question.correct_answer,
-			type: nextProps.question.type
+				question: nextProps.question.question,
+				answers: theAnswers,
+				correct: nextProps.question.correct_answer,
+				type: nextProps.question.type
 			})
 		}
-	else if (nextProps.question.type === "boolean"){
-		theAnswers.push("true", "false")
-		this.setState({
-			question: nextProps.question.question,
-			answers: theAnswers,
-			correct: nextProps.question.correct_answer,
-			type: nextProps.question.type
-		})
-	}	
+	}
 }
 
 componentDidUpdate(){
@@ -67,8 +80,8 @@ selector = (event) => {
 checkRight = (event) => {
 	event.preventDefault();
 	alert("ok")
-var x = document.getElementsByName("answer1");
-var i;
+	var x = document.getElementsByName("answer1");
+	var i;
 	for (i = 0; i < x.length; i++) {
     if (x[i].type == "radio") {
         console.log(x[i])
@@ -80,15 +93,22 @@ var i;
 	//INSERT THE setParentState to increase counter because WHHHHATTT THIS SHIT WORKS.
 }
 render(){
-	let showInputs = this.state.answers.map((element, i) => {	
-	return(	
-				<div key={i}>
-					<Input name="answer1" type="radio" onClick={this.selector} value={`${element}`} label={`${element}`} />
-					<br />
-					<br />
-				</div>
-		)
-	})
+		if (this.props.showQs === false) {
+		return(
+			<p></p>
+			)
+	}
+	else if (this.props.showQs === true) { 
+		let showInputs = this.state.answers.map((element, i) => {	
+			return(	
+					<div key={i}>
+						<Input name="answer1" type="radio" onClick={this.selector} value={`${element}`} label={`${element}`} />
+						<br />
+						<br />
+					</div>
+				)
+			})
+		
 		return (
 			<div className="trivQuests">
 			<p>{this.state.timer}</p>
@@ -105,6 +125,8 @@ render(){
 			</div>	
 			)
 		//}
+	}//end else if showQs === true
+	
 	}
 }
 

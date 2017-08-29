@@ -18,7 +18,8 @@ class Trivia extends Component {
 			triviaQs: [],
 			triviaanswers: [],
 
-			//TriviaQuestions states
+			//TriviaQuestions props
+			showQs: false,
 			counter: 0,
 			wrongCount: 0,
 			rightCount: 0,
@@ -79,13 +80,14 @@ getCustomQs = (event) => {
             
             // console.log(results)
             // console.log("^^RESULTS^^")
-        }).then(response => {
+        })
+        .then(response => {
             // console.log("qList in CDM then")
             // console.log(qList)
             this.setState({
-                triviaQs: qList
+                triviaQs: qList,
+                	showQs: true
             })
-            redirect to
         })
 
 }
@@ -96,30 +98,46 @@ componentDidMount(){
 
 
 componentDidUpdate(){
-				// console.log(this.state.triviaQs)
-				// console.log("^^^state.triviaQs")
+				console.log(this.state.triviaQs)
+				console.log("^^^state.triviaQs")
+
 }
-
+//this is written backwards - questions/then getquestions
 	render() {
+		if (this.state.showQs === true) {
+			return (
 		
-	return (
-
-			<div>
-			<Navi />
-			<GetQuestions 
-			questionHandler={this.getCustomQs} 
-			handleChange={this.handleChange} 
-			qCount={this.state.qCount} 
-			category={this.state.category} 
-			difficulty={this.state.difficulty}
-			/>
-
-
-			<Route exact path="/trivia/quiz" render={()=> <TriviaQuestions question={this.state.triviaQs[this.state.counter]} checkIt={this.checkIt} /> }/>
-	
-			</div>	
+					<div>
+					
 		
-	)
+		
+				<TriviaQuestions 
+				showQs={this.state.showQs} 
+				question={this.state.triviaQs[this.state.counter]} 
+				checkIt={this.checkIt}
+		
+				 /> 
+		
+					</div>	
+				
+				)
+		}
+		else if (this.state.showQs === false){
+			return (
+				<div>
+					<Navi />
+		
+					<GetQuestions 
+					questionHandler={this.getCustomQs} 
+					handleChange={this.handleChange} 
+					qCount={this.state.qCount} 
+					category={this.state.category} 
+					difficulty={this.state.difficulty}
+					/>
+
+				</div>	
+				)
+		}
 	}
 }
 
