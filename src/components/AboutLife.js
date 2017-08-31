@@ -27,7 +27,8 @@ render() {
 	return (
 		<div>
 			<Navi />
-		<p>This is 'Soldier Art' from the inside of a concrete bunker in Afghanistan.</p>
+		<p>This will be a carousel of'Soldier Art' from the inside of a concrete bunker in Afghanistan. If you ever find yourself in the desert you're liable to spend plenty of time staring at similar images.</p>
+
 		<img src="script.php?file=/public/images/IMG_1369.JPG" />
 		</div>
 		)

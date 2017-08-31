@@ -17,6 +17,7 @@ class Trivia extends Component {
 			//local states
 			triviaQs: [],
 			triviaanswers: [],
+			triviaQ: [],
 
 			//TriviaQuestions props
 			showQs: false,
@@ -73,21 +74,31 @@ getCustomQs = (event) => {
  const qList = [];
 
     helper.getCustomQs(this.state.qCount, this.state.category, this.state.difficulty)
-        .then(function(results) {
+        .then(results => {
             results.data.results.map(function(element, i) {
                 qList.push(element)
             })
             
             // console.log(results)
             // console.log("^^RESULTS^^")
-        })
-        .then(response => {
-            // console.log("qList in CDM then")
-            // console.log(qList)
+            console.log(qList)
+            console.log("^^qList")
+        }).then((response) => {
+            console.log("qList in CDM then")
+             console.log(qList)
             this.setState({
-                triviaQs: qList,
-                	showQs: true
-            })
+                triviaQs: qList
+          		})
+        }).then(()=>{
+        	console.log("2nd to last .then getCustomQs from trivia.js")
+        }).then(()=>{
+        	var newArr = [];
+        	newArr.push(this.state.triviaQs[0])
+        	console.log(newArr)
+        	this.setState({
+        		triviaQ: newArr,
+        		showQs: true
+        	})
         })
 
 }
@@ -98,31 +109,33 @@ componentDidMount(){
 
 
 componentDidUpdate(){
+	console.log("DID UPDATE")
 				console.log(this.state.triviaQs)
+				console.log(this.state.triviaQ[0])
 				console.log("^^^state.triviaQs")
 
 }
 //this is written backwards - questions/then getquestions
 	render() {
-		if (this.state.showQs === true) {
+		if (!!this.state.triviaQ[0]) {
 			return (
 		
 					<div>
 					
-		
-		
+		<p>{this.state.triviaQ[0].question}</p>
+		{/*
 				<TriviaQuestions 
 				showQs={this.state.showQs} 
-				question={this.state.triviaQs[this.state.counter]} 
+				question={this.state.triviaQ[0]} 
 				checkIt={this.checkIt}
 		
 				 /> 
-		
+		*/}
 					</div>	
 				
 				)
 		}
-		else if (this.state.showQs === false){
+		else {
 			return (
 				<div>
 					<Navi />
@@ -135,7 +148,9 @@ componentDidUpdate(){
 					difficulty={this.state.difficulty}
 					/>
 
-				</div>	
+				
+				</div>
+
 				)
 		}
 	}

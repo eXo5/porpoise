@@ -21,9 +21,10 @@ componentDidMount() {
 			
 			<div className="center">
 				<Row>
-				<h2 id="myName">Michael Yingling</h2>
+				<h2 id="myName">You might know Yuengling, but what about Yingling?</h2>
 				<div id="construction">
-					<h1 id="uC">Under Construction</h1>
+					<h1 id="uC">Well you'll have to wait<br />This corner of the internet is<br /> Under Construction</h1>
+					<p className="textIndent">I know this is hard to read. This is not an indeal background image, and it's going to change when it's not under construction</p>
 				</div>	
 					
 

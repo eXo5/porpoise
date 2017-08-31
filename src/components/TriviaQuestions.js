@@ -24,47 +24,50 @@ class TriviaQuestions extends Component {
 // }
 	
 // }
-getInitialState(){
-	return (
-		console.log(this.props.showQs),
+getInitialState(props){
+	console.log("getInitialState")
+		this.setState({question:this.props.question})
 		console.log(this.props.question)
-	)
+	
 }
 
-componentDidMount(){
+componentDidMount(props){
 	console.log(this.props)
 	console.log(this.state)
+	this.setState({question: this.props.question,
+	})
 }
 
-componentWillReceiveProps(nextProps){
-	console.log(this.nextProps)
-	if (this.props.showQs === true){ 
-		var theAnswers = []
+// componentWillReceiveProps(nextProps){
+// 	console.log(this.nextProps)
+// 	console.log("^^nextProps")
+// 	if (this.props.showQs === true){ 
+// 		var theAnswers = []
 		
-		if (nextProps.question.type === "multiple") {
-				for (var i = 0; i < nextProps.question.incorrect_answers.length; i++){
-					theAnswers.push(nextProps.question.incorrect_answers[i]);
-				}
-				theAnswers.push(nextProps.question.correct_answer)
-				console.log(theAnswers.sort())
-				this.setState({
-				question:nextProps.question.question,
-				answers: theAnswers.sort(),
-				correct: nextProps.question.correct_answer,
-				type: nextProps.question.type
-				})
-			}
-		else if (nextProps.question.type === "boolean"){
-			theAnswers.push("true", "false")
-			this.setState({
-				question: nextProps.question.question,
-				answers: theAnswers,
-				correct: nextProps.question.correct_answer,
-				type: nextProps.question.type
-			})
-		}
-	}
-}
+// 		if (nextProps.question.type === "multiple") {
+// 				for (var i = 0; i < nextProps.question.incorrect_answers.length; i++){
+// 					theAnswers.push(nextProps.question.incorrect_answers[i]);
+// 				}
+// 				theAnswers.push(nextProps.question.correct_answer)
+// 				console.log(theAnswers.sort())
+// 				this.setState({
+// 				question:nextProps.question.question,
+// 				answers: theAnswers.sort(),
+// 				correct: nextProps.question.correct_answer,
+// 				type: nextProps.question.type
+// 				})
+// 			}
+// 		else if (nextProps.question.type === "boolean"){
+// 			theAnswers.push("true", "false")
+// 			this.setState({
+// 				question: nextProps.question.question,
+// 				answers: theAnswers,
+// 				correct: nextProps.question.correct_answer,
+// 				type: nextProps.question.type
+// 			})
+// 		}
+// 	}
+// }
 
 componentDidUpdate(){
 	console.log(this.state.question)
@@ -98,34 +101,34 @@ render(){
 			<p></p>
 			)
 	}
-	else if (this.props.showQs === true) { 
-		let showInputs = this.state.answers.map((element, i) => {	
-			return(	
-					<div key={i}>
-						<Input name="answer1" type="radio" onClick={this.selector} value={`${element}`} label={`${element}`} />
-						<br />
-						<br />
-					</div>
-				)
-			})
+	// else if (this.props.showQs === true) { 
+	// 	let showInputs = this.state.answers.map((element, i) => {	
+	// 		return(	
+	// 				<div key={i}>
+	// 					<Input name="answer1" type="radio" onClick={this.selector} value={`${element}`} label={`${element}`} />
+	// 					<br />
+	// 					<br />
+	// 				</div>
+	// 			)
+	// 		})
 		
-		return (
-			<div className="trivQuests">
-			<p>{this.state.timer}</p>
-				<p>{this.state.question}</p>
-				<form>
-					<Row>
-						<Col s={6}>
-							{showInputs}
-						</Col>
-					</Row>
-						<Button onClick={this.checkRight}>Submit Answer</Button>
-				</form>		
+	// 	return (
+	// 		<div className="trivQuests">
+	// 		<p>{this.state.timer}</p>
+	// 			<p>{this.state.question}</p>
+	// 			<form>
+	// 				<Row>
+	// 					<Col s={6}>
+	// 						{showInputs}
+	// 					</Col>
+	// 				</Row>
+	// 					<Button onClick={this.checkRight}>Submit Answer</Button>
+	// 			</form>		
 
-			</div>	
-			)
-		//}
-	}//end else if showQs === true
+	// 		</div>	
+	// 		)
+	// 	//}
+	// }//end else if showQs === true
 	
 	}
 }

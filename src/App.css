@@ -67,6 +67,9 @@ body {
     -2px 2px 0 #804000,
     2px 2px 0 #663300;
 }
+.textIndent {
+  text-indent: 2em;
+}
 /*Trivia*/
   #getQuestions {
     text-align: center;
