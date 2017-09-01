@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import {Switch, Route, Link, Redirect } from 'react-router-dom'
+import {Button, Input} from 'react-materialize'
 import helper from '../utility/helper/helper'
 import Navi from './Navigator'
 import GetQuestions from './GetQuestions'
@@ -19,7 +20,11 @@ class Trivia extends Component {
 			triviaanswers: [],
 			triviaQ: [],
 
+			//user response
+			userPick: "",
+
 			//TriviaQuestions props
+			//THESE ARE USELESS NOW?!?!?
 			showQs: false,
 			counter: 0,
 			wrongCount: 0,
@@ -93,7 +98,9 @@ getCustomQs = (event) => {
         	console.log("2nd to last .then getCustomQs from trivia.js")
         }).then(()=>{
         	var newArr = [];
+        	var newAnsArr= [];
         	newArr.push(this.state.triviaQs[0])
+        	console.log(newAnsArr)
         	console.log(newArr)
         	this.setState({
         		triviaQ: newArr,
@@ -115,14 +122,57 @@ componentDidUpdate(){
 				console.log("^^^state.triviaQs")
 
 }
-//this is written backwards - questions/then getquestions
+userPicked = (event) => {
+
+	this.setState({
+		userPick: event.target.value
+	})
+
+}
+
+checkRight = (event) => {
+	event.preventDefault();
+	var x = document.getElementsByName("answer");
+	var i;
+	for (i = 0; i < x.length; i++) {
+    if (x[i].type == "radio") {
+       x[i].setAttribute("checked", false);
+       x[i].removeAttribute("checked");
+    }
+    if(this.state.userPick === this.state.triviaQ[this.state.counter].correct_answer){
+    	alert("ok")
+    }
+	}//remove the checkmark
+
+}
 	render() {
 		if (!!this.state.triviaQ[0]) {
+			var answers = []
+			let initAnswers = this.state.triviaQ[0].incorrect_answers.map(element =>{
+				answers.push(element)
+			});
+			answers.push(this.state.triviaQ[0].correct_answer)
+			answers.sort();
+			console.log(answers)
+			let showInitializedAnswers = answers.map((element,i) => {
+				return <div key={i}>
+									<Input name="answer"
+												 type="radio"
+
+												 onClick={this.userPicked}
+												 value={`${element}`}
+												 label={`${element}`}
+												 />
+												 <br />
+												 <br />
+								</div>
+			})
 			return (
 		
 					<div>
-					
-		<p>{this.state.triviaQ[0].question}</p>
+					<p>{this.state.triviaQ[this.state.counter].question}</p>
+					{showInitializedAnswers}
+					<Button onClick={this.checkRight}>Next Question</Button> 
 		{/*
 				<TriviaQuestions 
 				showQs={this.state.showQs} 
