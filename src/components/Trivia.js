@@ -77,13 +77,11 @@ handleChange = (event) => {
 getCustomQs = (event) => {
 	event.preventDefault();
  const qList = [];
-
     helper.getCustomQs(this.state.qCount, this.state.category, this.state.difficulty)
         .then(results => {
             results.data.results.map(function(element, i) {
                 qList.push(element)
             })
-            
             // console.log(results)
             // console.log("^^RESULTS^^")
             console.log(qList)
@@ -107,19 +105,22 @@ getCustomQs = (event) => {
         		showQs: true
         	})
         })
-
 }
 
 componentDidMount(){
    
-    } 
+    }
+componentShouldUpdate(prevState, nextState){
+if (prevState != nextState){
 
-
-componentDidUpdate(){
+}
+}
+componentDidUpdate(prevProps, prevState){
 	console.log("DID UPDATE")
+	console.log(prevState)
 				console.log(this.state.triviaQs)
 				console.log(this.state.triviaQ[0])
-				console.log("^^^state.triviaQs")
+				console.log("^^^state.triviaQs-ENDUPDATE")
 
 }
 userPicked = (event) => {
@@ -127,31 +128,42 @@ userPicked = (event) => {
 	this.setState({
 		userPick: event.target.value
 	})
-
-}
+console.log(this.state.userPick)
+	}
 
 checkRight = (event) => {
 	event.preventDefault();
 	var x = document.getElementsByName("answer");
-	var i;
+	var i; var count; var rCount;
 	for (i = 0; i < x.length; i++) {
     if (x[i].type == "radio") {
        x[i].setAttribute("checked", false);
        x[i].removeAttribute("checked");
     }
-    if(this.state.userPick === this.state.triviaQ[this.state.counter].correct_answer){
-    	alert("ok")
+    if(this.state.userPick === this.state.triviaQs[this.state.counter].correct_answer){
+
+    	this.setState({
+
+    		rightCount: this.state.rightCount++
+    	})
+    	break;
+    }else if (this.state.userPick != this.state.triviaQs[this.state.counter].correct_answer) {
+    	this.setState({
+    		wrongCount: ++this.state.wrongCount
+    	})
     }
 	}//remove the checkmark
-
+	this.setState({
+ 		counter: ++this.state.counter
+	})
 }
 	render() {
-		if (!!this.state.triviaQ[0]) {
+		if (!!this.state.triviaQs[this.state.counter]) {
 			var answers = []
-			let initAnswers = this.state.triviaQ[0].incorrect_answers.map(element =>{
+			let initAnswers = this.state.triviaQs[this.state.counter].incorrect_answers.map(element =>{
 				answers.push(element)
 			});
-			answers.push(this.state.triviaQ[0].correct_answer)
+			answers.push(this.state.triviaQs[this.state.counter].correct_answer)
 			answers.sort();
 			console.log(answers)
 			let showInitializedAnswers = answers.map((element,i) => {
@@ -168,10 +180,9 @@ checkRight = (event) => {
 								</div>
 			})
 			return (
-		
 					<div>
-					<p>{this.state.triviaQ[this.state.counter].question}</p>
-					{showInitializedAnswers}
+					<p>{this.state.triviaQs[this.state.counter].question}</p>
+										{showInitializedAnswers}
 					<Button onClick={this.checkRight}>Next Question</Button> 
 		{/*
 				<TriviaQuestions 
