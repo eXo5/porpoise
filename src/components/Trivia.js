@@ -31,7 +31,6 @@ class Trivia extends Component {
 			rightCount: 0,
 			timer: 0,
 			thisAnswer: ""
-
 		}
 	}
 
@@ -39,9 +38,9 @@ mapQs = () => {
 return this.state.triviaQs.map((element, i) => {
 	console.log(element.category)
 	return(
-		<span key={i}>
-			<h2>element.category</h2>
-		</span>
+			<span key={i}>
+				<h2>element.category</h2>
+			</span>
 		)
 	})
 
@@ -76,7 +75,7 @@ handleChange = (event) => {
 
 getCustomQs = (event) => {
 	event.preventDefault();
- const qList = [];
+ 		const qList = [];
     helper.getCustomQs(this.state.qCount, this.state.category, this.state.difficulty)
         .then(results => {
             results.data.results.map(function(element, i) {
@@ -108,21 +107,23 @@ getCustomQs = (event) => {
 }
 
 componentDidMount(){
-   
-    }
+  
+  }
+
 componentShouldUpdate(prevState, nextState){
 if (prevState != nextState){
 
+	}
 }
-}
-componentDidUpdate(prevProps, prevState){
-	console.log("DID UPDATE")
-	console.log(prevState)
-				console.log(this.state.triviaQs)
-				console.log(this.state.triviaQ[0])
-				console.log("^^^state.triviaQs-ENDUPDATE")
 
-}
+componentDidUpdate(prevProps, prevState){
+	 if (!!this.state.triviaQs[this.state.counter]){
+   	if (this.state.counter === this.state.triviaQs.length) {
+   		alert("Hey look at this shit")
+  	 }
+    }
+	}
+
 userPicked = (event) => {
 
 	this.setState({
@@ -135,6 +136,8 @@ checkRight = (event) => {
 	event.preventDefault();
 	var x = document.getElementsByName("answer");
 	var i; var count; var rCount;
+	if (!!this.state.userPick){
+
 	for (i = 0; i < x.length; i++) {
     if (x[i].type == "radio") {
        x[i].setAttribute("checked", false);
@@ -153,9 +156,11 @@ checkRight = (event) => {
     	})
     }
 	}//remove the checkmark
-	this.setState({
- 		counter: ++this.state.counter
-	})
+		this.setState({
+ 			counter: ++this.state.counter,
+ 			userPick: null
+		})
+	}
 }
 	render() {
 		if (!!this.state.triviaQs[this.state.counter]) {
@@ -170,7 +175,6 @@ checkRight = (event) => {
 				return <div key={i}>
 									<Input name="answer"
 												 type="radio"
-
 												 onClick={this.userPicked}
 												 value={`${element}`}
 												 label={`${element}`}
@@ -206,7 +210,7 @@ checkRight = (event) => {
 					handleChange={this.handleChange} 
 					qCount={this.state.qCount} 
 					category={this.state.category} 
-					difficulty={this.state.difficulty}
+					difficulty={this.state.difficulty} 
 					/>
 
 				
