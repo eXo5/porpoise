@@ -89,7 +89,8 @@ getCustomQs = (event) => {
             console.log("qList in CDM then")
              console.log(qList)
             this.setState({
-                triviaQs: qList
+                triviaQs: qList,
+                qCount: qList.length
           		})
         }).then(()=>{
         	console.log("2nd to last .then getCustomQs from trivia.js")
@@ -104,6 +105,7 @@ getCustomQs = (event) => {
         		showQs: true
         	})
         })
+  //Called by GetQuestions
 }
 
 componentDidMount(){
@@ -118,7 +120,7 @@ if (prevState != nextState){
 
 componentDidUpdate(prevProps, prevState){
 	 if (!!this.state.triviaQs[this.state.counter]){
-   	if (this.state.counter === this.state.triviaQs.length) {
+   	if (this.state.qCount == this.state.counter) {
    		alert("Hey look at this shit")
   	 }
     }
@@ -135,7 +137,11 @@ console.log(this.state.userPick)
 checkRight = (event) => {
 	event.preventDefault();
 	var x = document.getElementsByName("answer");
-	var i; var count; var rCount;
+	var i;
+	var count = this.state.counter;
+	var rCount = this.state.rightCount;
+	var wCount = this.state.wrongCount;
+
 	if (!!this.state.userPick){
 
 	for (i = 0; i < x.length; i++) {
@@ -144,16 +150,17 @@ checkRight = (event) => {
        x[i].removeAttribute("checked");
     }
     if(this.state.userPick === this.state.triviaQs[this.state.counter].correct_answer){
-
+    	++rCount;
     	this.setState({
-
-    		rightCount: this.state.rightCount++
+    		rightCount: rCount 
     	})
     	break;
     }else if (this.state.userPick != this.state.triviaQs[this.state.counter].correct_answer) {
+    	++wCount;
     	this.setState({
-    		wrongCount: ++this.state.wrongCount
+    		wrongCount: wCount
     	})
+    	break;
     }
 	}//remove the checkmark
 		this.setState({
@@ -185,6 +192,9 @@ checkRight = (event) => {
 			})
 			return (
 					<div>
+					<p>Right Answers: {this.state.rightCount}</p>
+					<p>Wrong Answers: {this.state.wrongCount}</p>
+
 					<p>{this.state.triviaQs[this.state.counter].question}</p>
 										{showInitializedAnswers}
 					<Button onClick={this.checkRight}>Next Question</Button> 

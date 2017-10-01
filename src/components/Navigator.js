@@ -21,7 +21,9 @@ render(){
 						<Link to="about"><NavItem href='/about'>About Me</NavItem></Link>
 						<Link to="about-life"><NavItem href='/about'>About Life</NavItem></Link>
 						<NavItem>Projects</NavItem>
+						<Link to="/Monies"><NavItem href="/monies">$</NavItem></Link>
 						<Link to="/contact"><NavItem href='#'>Contact</NavItem></Link>
+
 					</div>
 				</Navbar>
 			

@@ -59,15 +59,14 @@ componentDidUpdate(){
 				<form>
 					<Row>
 						<Col s={6}>
-						<Input 
-						type="number" 
-						label="How many questions would you like?" 
-						value={this.props.qCount} 
-						name="qCount" 
-						onChange={this.props.handleChange} 
-						
-						/>
-
+							<Input 
+							type="number" 
+							label="How many questions would you like?" 
+							value={this.props.qCount} 
+							name="qCount" 
+							onChange={this.props.handleChange} 
+							
+							/>
 						<br />
 						<br />
 

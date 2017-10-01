@@ -7,6 +7,7 @@ import Trivia from './components/Trivia'
 import AboutMe from './components/AboutMe'
 import Contact from './components/Contact'
 import AboutLife from './components/AboutLife'
+import Payment from './components/Monies'
 
 class App extends Component {
   render() {
@@ -20,7 +21,7 @@ class App extends Component {
             <Route exact path="/about-life" render={()=>(<AboutLife />)} />
             <Route exact path="/about" render={()=> <AboutMe />} />
             <Route exact path="/contact" render={()=> <Contact />} />
-
+            <Route exact path="/scrilla" render={()=> <Payment />} /> 
           </Switch>
           
       </div>
