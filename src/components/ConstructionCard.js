@@ -33,7 +33,8 @@ componentDidMount() {
 					<br />
 					</h1>
 					<p className="textIndent">
-					I know this is hard to read. This is not an indeal background image, and it's going to change when it's not under construction. </p>
+					This is my personal 'playground' for learning - my arrays are in a constant state of disarray and you shouldn't be surprised if the site is broken for any reason
+				</p>
 				</div>	
 					
 

@@ -18,7 +18,7 @@ render() {
 		<div id="aboutDiv">
 			<Navi />
 				<div className="container">
-					<h1 id="h1Bio" onClick={()=>{alert("There used to be a huge story here about who I am, but even as long as it was I wasn't satisfied with how much of it was left out. I'm an interesting guy. AMA")}}>Information</h1>
+					<h1 id="h1Bio" onClick={()=>{alert("There used to be a huge story here about who I am, but even with it being as long as it was, I still wasn't satisfied with how much was left out. I'm an interesting guy. AMA")}}>Information</h1>
 						<br />
 						<br />
 
@@ -26,7 +26,7 @@ render() {
 					<p className="textIndent">
 					<br />
 					<br />
-					Previously Sergeant Yingling of the U.S. Army, then international Air Traffic Controller, now an IT professional with an affinity for web design. I'm currently going back to school for Cyber Security and tutoring Javascript part time.
+					Prior Sergeant, U.S. Army and international Air Traffic Controller, now IT professional with an affinity for web design. I'm currently going back to school for Cyber Security.
 					</p>
 					<Link to="/contact"><Button>Contact</Button></Link>
 				</div>		

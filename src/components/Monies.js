@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import {Input, Button } from 'react-materialize'
 
 class Payment extends Component {
 	constructor(){
@@ -6,13 +7,23 @@ class Payment extends Component {
 		this.state = {
 
 		}
-
 	}
-
+handleChange=(event)=>{
+	var newState={}; 
+newState[event.target.id] = event.target.value;
+this.setState({})
+}
 render(){
 	return(
 			<div>
-				<h1>Monies</h1>
+				<form>
+					<Input
+					 type="text"
+					 value={this.state.firstName}
+					 onChange={this.handleChange}
+					 	/>
+					 	<Button>Submit</Button>
+					 </form>	
 			</div>
 		)
 }

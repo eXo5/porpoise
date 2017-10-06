@@ -74,3 +74,9 @@ body {
   #getQuestions {
     text-align: center;
   }
+/*Galley*/
+.thesePics{
+ transform:  rotate(90deg);  
+  max-height: 50em;
+  max-width: 50em;
+}

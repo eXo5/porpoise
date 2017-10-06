@@ -1,18 +1,20 @@
-import React, {Component} from 'react'
-import { Route, Link } from 'react-router-dom'
+import React, { Component } from 'react';
 import { Button } from 'react-materialize'
-import helper from '../utility/helper/helper'
 
 class Hangman extends Component {
-	constructor(){
-	super()
-	
-	}
-
-	render(){
-		return(
-			
-		)
-	}
-
+  constructor(){
+    super()
+    this.state ={
+      words: []
+    }
+  }
+  render() {
+    return (
+      <div>
+        <h1>Hangman</h1>
+      </div>
+    );
+  }
 }
+
+export default Hangman;

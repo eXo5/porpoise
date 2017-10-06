@@ -31,7 +31,8 @@ componentDidMount() {
 				<Navi />
 				<UnderConstruction />
 				<Link to="trivia"><Button>Trivia</Button></Link>
-			
+				<Link to="hangman"><Button>Trivia</Button></Link>
+				
 			</div>
 			)
 	}
