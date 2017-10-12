@@ -11,6 +11,7 @@ import Payment from './components/Monies'
 import Hangman from './components/Hangman'
 
 class App extends Component {
+
   render() {
     return (
       <div>

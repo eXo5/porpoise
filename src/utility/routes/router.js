@@ -12,6 +12,12 @@ app.get("/", function(req, res){
   res.sendFile(__dirname + "./public/index.html");
 });
 
+app.gepostt("/heyjax/", function(req, res){
+	console.log("heyjax")
+	console.log(req.body);
+	res.send("look at that");
+})
+
 app.get("/about-life", function(req, res){
   res.send("Your NODE APP IS ALIVE")
 });

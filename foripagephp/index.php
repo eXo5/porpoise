@@ -1,14 +1,13 @@
-<!doctype>
-<html>
-  <head>
-    <title>Hello, PHP</title>
 
-    <?php require './head.php' ?>
-
-  </head>
-  <body>
-    <div class="container jumbotron">
-      <?php echo "<h1>Hello, PHP.</h1>" ?>
-    </div>
-  </body>
-</html>
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // collect value of input field
+    $name = $_POST['ffirstName']; 
+    $email = $_POST['femail']
+    if (empty($name)) {
+        echo "Name is empty";
+    } else {
+        echo "$name has an email: $email";
+    }
+}
+?>

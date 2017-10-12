@@ -1,5 +1,5 @@
 import axios from 'axios'
-
+var fs = require('fs')
 var helper = {
 
 	getQs: function(){
@@ -24,8 +24,41 @@ var helper = {
 		.then(function(results) {
 			return results
 		})
+	},
+
+	checkPics: function(dir){
+		//doesn't fucking work
+		var _getAllFilesFromFolder = function(dir) {
+    var results = [];
+
+    fs.readdirSync(dir).forEach(function(file) {
+
+        file = dir+'/'+file;
+        var stat = fs.statSync(file);
+
+        if (stat && stat.isDirectory()) {
+            results = results.concat(_getAllFilesFromFolder(file))
+        } else results.push(file);
+
+    });
+
+    return results;
+
+};
+	},
+
+	getPics: function(){
+		//didn't fucking work before the one before this one didn't fucking work.
+		var myfiles = [];
+
+		fs.read('../images/', function (err, files) { if (err) throw err;
+  files.forEach( function (file) {
+    myfiles.push(file);
+  });
+  console.log(myfiles);
+  return myfiles;
+});
 	}
-	
 }
 
 export default helper

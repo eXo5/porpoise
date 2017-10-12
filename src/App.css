@@ -44,6 +44,9 @@ body {
     -2px 2px 0 #804000,
     2px 2px 0 #663300;
 }
+.redText {
+  color:red;
+}
 
 .navbar {
  background-color: rgba(255,255,255,0);
@@ -76,7 +79,13 @@ body {
   }
 /*Galley*/
 .thesePics{
- transform:  rotate(90deg);  
-  max-height: 50em;
-  max-width: 50em;
+ transform: rotate(90deg);  
+  height: 500px;
+  width: 500px;
+  padding-top:25px;
+}
+.thatPics{
+  padding-top:25px;
+  height:50em;
+  width:50em;
 }
