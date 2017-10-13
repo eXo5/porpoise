@@ -58,7 +58,7 @@ componentDidUpdate(){
 			<div id="questionList">
 				<form>
 					<Row>
-						<Col s={6}>
+						<Col s={9}>
 							<Input 
 							type="number" 
 							label="How many questions would you like?" 
@@ -69,7 +69,10 @@ componentDidUpdate(){
 							/>
 						<br />
 						<br />
-
+						</Col>
+						</Row>
+						<Row>
+						<Col s={9}>
 						<Input 
 						type="select" 
 						label="Any particular category of question?"
@@ -106,6 +109,10 @@ componentDidUpdate(){
 
 	           <br />
 	           <br /> 
+	           </Col>
+	           </Row>
+	           <Row>
+	           <Col s={9}>
 	           <Input 
 	           type="select"
 	           label="Difficulty?"
@@ -124,9 +131,13 @@ componentDidUpdate(){
 
 	          <br /> 
 	          <br /> 
-
+	          </Col>
+	          </Row>
+	          <Row>
+	          <Col s={12}>
 						<Button onClick={this.props.questionHandler}>Get Questions</Button>
 					</Col>
+					
 				</Row>	
 				</form>
 
