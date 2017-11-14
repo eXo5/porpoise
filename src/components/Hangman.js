@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import { Button } from 'react-materialize'
-
+import HangmanStart from './HangmanStart'
 class Hangman extends Component {
   constructor(){
     super()
@@ -12,6 +12,8 @@ class Hangman extends Component {
     return (
       <div>
         <h1>Hangman</h1>
+          <h6>Coming Soon!</h6>
+          <HangmanStart />
       </div>
     );
   }

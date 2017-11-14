@@ -1,12 +1,17 @@
+.parallax {
+    height: 500px;
+    background: transparent;
+}
+
 body {
   padding-top: 20px;
   color: white;
-  position: relative;
-  background-image: url("/images/deepspace.jpg");
-    background-repeat: no-repeat;
+/*  position: relative;*/
+  background-image: url("/images/hubbledeep.png");
+  /*  background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: 0 64;
-    background-size: auto; 
+    background-size: auto; */
 }.App {
       text-align: center;
       }.App-logo {
@@ -89,4 +94,10 @@ body {
   padding-top:25px;
   height:50em;
   width:50em;
+}
+#triviaButton{
+  margin-left: 25em;
+}
+#hangmanButton{
+  margin-left:30em;
 }

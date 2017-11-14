@@ -30,8 +30,8 @@ componentDidMount() {
 
 				<Navi />
 				<UnderConstruction />
-				<Link to="trivia"><Button>Trivia</Button></Link>
-				<Link to="hangman"><Button>Trivia</Button></Link>
+				<Link to="trivia"><Button id="triviaButton">Trivia</Button></Link><br /><br />
+				<Link to="hangman"><Button id="hangmanButton">Hangman!</Button></Link>
 				
 			</div>
 			)

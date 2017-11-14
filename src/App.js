@@ -23,7 +23,7 @@ class App extends Component {
             <Route exact path="/about-life" render={()=>(<Gallery />)} />
             <Route exact path="/about" render={()=> <AboutMe />} />
             <Route exact path="/contact" render={()=> <Contact />} />
-            <Route exact path="/scrilla" render={()=> <Payment />} />
+            <Route exact path="/Monies" render={()=> <Payment />} />
             <Route exact path="/hangman" render={()=> <Hangman />} />
           </Switch>
           

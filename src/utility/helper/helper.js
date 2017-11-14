@@ -57,7 +57,35 @@ var helper = {
   });
   console.log(myfiles);
   return myfiles;
-});
+})
+	},
+
+	hangmanGet: function(){
+   // // TODO: replace with your own app id and app key
+
+//reinest appId and apiKey
+
+   //  let language = "en"
+   //  let word = "Change"
+   //  let word_id = word.toLowerCase() //word id is case sensitive and lowercase is required
+   //  let url = URL(string: "https://od-api.oxforddictionaries.com:443/api/v1/grammaticalFeatures/" + language + "/\(word_id)")
+   //  var request = URLRequest(url: url)
+   //  request.addValue("application/json", forHTTPHeaderField: "Accept")
+   //  request.addValue(appId, forHTTPHeaderField: "app_id")
+   //  request.addValue(appKey, forHTTPHeaderField: "app_key")
+
+   //  let session = URLSession.shared
+   //  _ = session.dataTask(with: request, completionHandler: { data, response, error in
+   //      if let response = response,
+   //          let data = data,
+   //          let jsonData = try? JSONSerialization.jsonObject(with: data, options: .mutableContainers) {
+   //          print(response)
+   //          print(jsonData)
+   //      } else {
+   //          print(error)
+   //          print(NSString.init(data: data!, encoding: String.Encoding.utf8.rawValue))
+   //      }
+   //  }).resume()		
 	}
 }
 

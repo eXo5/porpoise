@@ -10,6 +10,7 @@ class Trivia extends Component {
 	constructor(props){
 		super(props)
 		this.state = {
+			newSubmitted: false,
 			//GetQuestions states
 			qCount: 0,
 			category: "",
@@ -169,7 +170,15 @@ checkRight = (event) => {
 		})
 	}
 }
+
 	render() {
+
+		if (this.state.newSubmitted === true && this.state.counter < 1){
+			return (
+					<p>HEY IT WORKS</p>
+					)
+		}
+		//if game started:
 		if (!!this.state.triviaQs[this.state.counter]) {
 			var answers = []
 			let initAnswers = this.state.triviaQs[this.state.counter].incorrect_answers.map(element =>{
@@ -192,25 +201,18 @@ checkRight = (event) => {
 			})
 			return (
 					<div>
-					<p>Right Answers: {this.state.rightCount}</p>
-					<p>Wrong Answers: {this.state.wrongCount}</p>
+						<p>Right Answers: {this.state.rightCount}</p>
+						<p>Wrong Answers: {this.state.wrongCount}</p>
 
-					<p>{this.state.triviaQs[this.state.counter].question}</p>
-										{showInitializedAnswers}
-					<Button onClick={this.checkRight}>Next Question</Button> 
-		{/*
-				<TriviaQuestions 
-				showQs={this.state.showQs} 
-				question={this.state.triviaQ[0]} 
-				checkIt={this.checkIt}
-		
-				 /> 
-		*/}
-					</div>	
+						<p>{this.state.triviaQs[this.state.counter].question}</p>
+											{showInitializedAnswers}
+						<Button onClick={this.checkRight}>Next Question</Button> 
+					</div>					
 				
 				)
-		}
-		else {
+			//end game started
+		}	else {
+
 			return (
 				<div>
 					<Navi />
@@ -230,5 +232,4 @@ checkRight = (event) => {
 		}
 	}
 }
-
 export default Trivia

@@ -47,7 +47,7 @@ render() {
 		header={<p className="redText">Subscribe</p>}
 		trigger={<a>sign up </a>}>
 		<Row>
-			<form action="/index.php" method="post">
+			<form action="contactform.php" method="POST">
 				<Input className="redText" s={6} label="First Name" onChange={this.handleChange}/>
 				<Input className="redText" s={6} label="Email" onChange={this.handleChange}/>
 				<Button onClick={this.signupClick}>Submit</Button>

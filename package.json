@@ -11,6 +11,7 @@
     "react-lazy-load": "^3.0.12",
     "react-live-clock": "^2.0.1",
     "react-materialize": "^1.0.9",
+    "react-parallax": "^1.5.0",
     "react-router-dom": "^4.1.2",
     "react-scripts": "1.0.11"
   },
