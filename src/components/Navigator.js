@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
-import { Navbar, NavItem } from 'react-materialize';
+import { Nav, NavItem } from 'react-bootstrap';
 import helper from '../utility/helper/helper';
 
 class Navi extends Component {
@@ -10,24 +9,43 @@ class Navi extends Component {
 		this.state = {
 			array: []
     }
+
+    this.handleSelect =(selectedKey) => {
+    console.log(`selected ${selectedKey}`);
+  }
+
 }
 
 render(){
 	return(
 
-			
-				<Navbar brand='Ying' className="navbar navbar-default right">
-					<div className="navi">
-						<Link to="about"><NavItem href='/about'>About Me</NavItem></Link>
-						<Link to="about-life"><NavItem href='/about'>Gallery</NavItem></Link>
-						<NavItem>Projects</NavItem>
-						<Link to="/Monies"><NavItem href="/monies">$</NavItem></Link>
-						<Link to="/contact"><NavItem href='#'>Contact</NavItem></Link>
+			<div>
+ <Nav
+          bsStyle="pills"
+          justified
+          activeKey={1}
+          onSelect={key => this.handleSelect(key)}
+        >
+          <NavItem id="nav1" eventKey={1} href="/">
+            Home
+          </NavItem>
+          <NavItem id="nav2" eventKey={2} href="/contact">
+            Contact
+          </NavItem>
+          <NavItem id="nav3" eventKey={3} href="/trivia">
+            Trivia
+          </NavItem>
+          <NavItem id="nav4" eventKey={4} disabled href="/hangman">
+            Hangman
+          </NavItem>
+          <NavItem id="nav5" eventKey={5} href="/breakonthrough">
+ 						The OtherSi
+          </NavItem>
 
-					</div>
-				</Navbar>
-			
-	
+        </Nav>
+        <br />
+
+      </div>
 
 		)
 	}

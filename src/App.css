@@ -48,20 +48,57 @@ body {
     2px -2px 0 #ff8000,
     -2px 2px 0 #804000,
     2px 2px 0 #663300;
-}/*end Construction Component*/
+}
+.center {
+  
+}
+/*end Construction Component*/
 
 .redText {
   color:red;
 }
 
-.navbar {
- background-color: rgba(255,255,255,0);
- display: inline-block;
-}.navi {
-  display: inline-flex;
-  align-content: right;
+#nav1 {
+  position: absolute;
+  left: 3em;
+  top: 7em;
+  width: 10em;
+}
+#nav2 {
+  position: absolute;
+  left: 3em;
+  top: 10em;
+  width: 10em;
+}
+#nav3{
+  position: absolute;
+  left: 3em;
+  top: 13em;
+  width: 10em;
+}
+#nav4 {
+  position: absolute;
+  left: 3em;
+  top: 16em;
+  width: 10em;
+}
+#nav5 {
+  position: absolute;
+  left: 3em;
+  top: 19em;
+  width: 10em;
 }
 
+#init {
+  top: 12em;
+  text-align:center;
+}
+
+#loluwotm8 {
+  top:98%;
+  font-family: Robotica;
+  font-size: 12em;
+}
 .clock {
   text-align: center;
   margin-top: 5px;
@@ -81,7 +118,11 @@ body {
 }
 /*Trivia*/
   #getQuestions {
+    position: absolute;
+    top: 25%;
+    left: 40%;
     text-align: center;
+    width: 55%;
   }
 /*Galley*/
 .thesePics{

@@ -48,8 +48,8 @@ render() {
 		trigger={<a>sign up </a>}>
 		<Row>
 			<form action="contactform.php" method="POST">
-				<Input className="redText" s={6} label="First Name" onChange={this.handleChange}/>
-				<Input className="redText" s={6} label="Email" onChange={this.handleChange}/>
+				<Input className="redText" formName="firstName" s={6} label="First Name" onChange={this.handleChange}/>
+				<Input className="redText" formname="email" s={6} label="Email" onChange={this.handleChange}/>
 				<Button onClick={this.signupClick}>Submit</Button>
 			</form>
 		</Row>

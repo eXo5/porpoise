@@ -5,7 +5,6 @@ import logo from '../logo.svg';
 import '../App.css';
 import UnderConstruction from './ConstructionCard'
 import TimeClock from './TimeClock'
-
 class MikeMain extends Component {
 	constructor(){
 		super()
@@ -28,9 +27,6 @@ componentDidMount() {
 				</div>
 
 				<Navi />
-				<div id="logo">
-					<img src={logo} className="App-logo" alt="logo" />
-				</div>
 				<UnderConstruction />
 				<h6 id="init">So I'm going to put some recipes or something here? I'm working on it</h6>
 				<h6 id="loluwotm8"></h6>

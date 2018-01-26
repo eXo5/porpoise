@@ -26,7 +26,7 @@ render() {
 					<p className="textIndent layer">
 					<br />
 					<br />
-					Prior Sergeant, U.S. Army and international Air Traffic Controller, now IT professional with an affinity for web design. I'm currently going back to school for Cyber Security.
+					Prior Sergeant, U.S. Army and international Air Traffic Controller, now IT professional with an affinity for web design. Currently back in school for the ol' Cyber Security program.
 					</p>
 					<Link to="/contact"><Button>Contact</Button></Link>
 				</div>

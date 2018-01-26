@@ -1,7 +1,11 @@
 import React, {Component} from 'react'
-import { Input, Button, Row, Col } from 'react-materialize'
+import { Row, Col, Input, Button } from 'react-materialize'
 import helper from '../utility/helper/helper'
-import TriviaQuestions from './TriviaQuestions'
+import Navi from './Navigator'
+import logo from '../logo.svg';
+import '../App.css';
+import UnderConstruction from './ConstructionCard'
+import TimeClock from './TimeClock'
 
 
 class GetQuestions extends Component {
@@ -56,6 +60,7 @@ componentDidUpdate(){
 	render() {
 		return (
 			<div id="questionList">
+
 				<form>
 					<Row>
 						<Col s={9}>

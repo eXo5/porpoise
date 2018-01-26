@@ -6,6 +6,7 @@ import Navi from './Navigator'
 import GetQuestions from './GetQuestions'
 import TriviaQuestions from './TriviaQuestions'
 
+
 class Trivia extends Component {
 	constructor(props){
 		super(props)
@@ -55,6 +56,11 @@ checkIt = (event) => {
 	console.log(this.state.counter)	
 	
 }
+handleMouseWU = (event) => {
+	document.getElementById("getQuestions").addEventListener("wheel", function(event){
+		console.log(event)
+	})
+}
 
 handleChange = (event) => {
 	const target = event.target;
@@ -64,6 +70,8 @@ handleChange = (event) => {
     }
     	else if (target.type === "number") { 
     		var value = Math.abs(event.target.value);
+
+    		console.log(event)
     	}
     	else { 
     		var value = event.target.value;
@@ -108,7 +116,6 @@ getCustomQs = (event) => {
         })
   //Called by GetQuestions
 }
-
 componentDidMount(){
   
   }
@@ -121,7 +128,7 @@ if (prevState != nextState){
 
 componentDidUpdate(prevProps, prevState){
 	 if (!!this.state.triviaQs[this.state.counter]){
-   	if (this.state.qCount == this.state.counter) {
+   	if (this.state.qCount === this.state.counter) {
    		alert("Hey look at this shit")
   	 }
     }
@@ -180,6 +187,7 @@ checkRight = (event) => {
 		}
 		//if game started:
 		if (!!this.state.triviaQs[this.state.counter]) {
+
 			var answers = []
 			let initAnswers = this.state.triviaQs[this.state.counter].incorrect_answers.map(element =>{
 				answers.push(element)
@@ -201,6 +209,8 @@ checkRight = (event) => {
 			})
 			return (
 					<div>
+						<Navi />
+	
 						<p>Right Answers: {this.state.rightCount}</p>
 						<p>Wrong Answers: {this.state.wrongCount}</p>
 
@@ -215,16 +225,21 @@ checkRight = (event) => {
 
 			return (
 				<div>
-					<Navi />
-		
-					<GetQuestions 
-					questionHandler={this.getCustomQs} 
-					handleChange={this.handleChange} 
-					qCount={this.state.qCount} 
-					category={this.state.category} 
-					difficulty={this.state.difficulty} 
-					/>
 
+					<Navi />
+					
+					<div id="getQuestions">
+
+						<GetQuestions 
+						questionHandler={this.getCustomQs} 
+						mousewheel={this.MouseWheelHandle}
+						handleChange={this.handleChange} 
+						qCount={this.state.qCount} 
+						category={this.state.category} 
+						difficulty={this.state.difficulty} 
+						/>
+
+					</div>
 				
 				</div>
 
